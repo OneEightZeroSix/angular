@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="weui.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- MVC      -->
+<!-- MVVM  组件-->
+<body ng-app="ng-app">
+    <!-- 头部控制器 -->
+    <div ng-controller="headerCtrl">
+        <header>{{title}}</header>
+    </div>
+    <!-- 搜索框控制器 -->
+    <div ng-controller="searchCtrl" class="weui-search-bar" ng-class="{
+        'weui-search-bar_focusing':bool
+    }" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label ng-click="toggle()" class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a ng-click="toggle()" href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+    <script src="angular.js"></script>
+    <script>
+        // 主模块
+        var app = angular.module("ng-app", []);
+        // 头部控制器
+        app.controller("headerCtrl", ["$scope", function ($scope) {
+            //code 控制器的逻辑
+            // Model
+            $scope.title = "微信"
+        }])
+        app.controller("searchCtrl", ["$scope", function ($scope) {
+            // 双向数据绑定
+            //code 控制器的逻辑
+            // Model data
+            $scope.bool = false
+            // methods
+            $scope.toggle = function(){
+                $scope.bool = !$scope.bool
+            }
+        }])
+    </script>
+</body>
+<!-- 
+    MV(C)
+    MVVM
+    V
+ -->
+
+</html>
